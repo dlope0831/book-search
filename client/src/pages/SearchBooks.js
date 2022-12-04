@@ -31,10 +31,6 @@ const SearchBooks = () => {
     try {
       const response = await searchGoogleBooks(searchInput);
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
-
       const { items } = await response.json();
 
       const bookData = items.map((book) => ({
@@ -66,10 +62,6 @@ const SearchBooks = () => {
 
     try {
       const response = await saveBook(bookToSave, token);
-
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
 
       // if book successfully saves to user's account, save book id to state
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
